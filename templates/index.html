@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dois Anos de Namoro</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Dois Anos de Namoro</h1>
+    <div class="relogio">
+      <p>Tempo desde que nos conhecemos: <span id="tempo"></span></p>
+    </div>
+
+    <!-- Grid de fotos -->
+    <div class="fotos">
+      {% for i in range(1, 26) %}
+        <div class="foto">
+          <img src="{{ url_for('static', filename='images/foto' ~ i ~ '.jpg') }}" alt="Foto {{ i }}">
+          <p>{{ legendas[i - 1] }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Cartinha (Envelope animado) -->
+    <div class="envelope" id="envelope" onclick="toggleCartinha()">
+      <div class="flap front"></div>
+      <div class="flap top"></div>
+      <div class="letter" id="mensagem">
+        <p>Sua mensagem aqui, olá...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
