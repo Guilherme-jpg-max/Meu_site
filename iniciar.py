@@ -1,10 +1,7 @@
-# iniciar.py
 from datetime import datetime
 
-# Data em que nós nos conhecemos
 data_conhecimento = datetime(2022, 5, 19)
 
-# Lista com as legendas para cada foto
 legendas = [
     "Nosso primeiro encontro, que momento especial!",
     "O sorriso dela é o que me faz feliz todos os dias.",
@@ -34,19 +31,15 @@ legendas = [
     "O que mais importa é estarmos juntos, não importa onde."
 ]
 
-# Função para calcular os dias desde que se conheceram
 def calcular_tempo():
-    # Calcula a diferença entre a data atual e a data do conhecimento
     delta = datetime.now() - data_conhecimento
 
-    # Obtém os dias, horas, minutos e segundos
     dias = delta.days
     horas = delta.seconds // 3600
     minutos = (delta.seconds // 60) % 60
     segundos = delta.seconds % 60
 
-    # Retorna como uma string formatada
+
     return f"{dias} dias, {horas} horas, {minutos} minutos, {segundos} segundos"
-# Função para retornar as legendas
 def obter_legendas():
     return legendas

@@ -1,218 +1,525 @@
 * {
-    box-sizing: border-box;
-  }
-  
+  box-sizing: border-box;
+}
 
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1c1c1c;
-    color: #fff;
+body {
+  display: flex;
+  justify-content: flex-start;  
+  align-items: center;
+  flex-direction: column;
+  height: 350vh;
+  margin: 0;
+  background-color: #353131;
+}
+.star-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 2s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0;
   }
-  .container {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
+  50% {
+    opacity: 1;
   }
-  h1 {
-    color: #e60000;
-    margin-bottom: 20px;
+}
+
+header.informacoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #720000, #8d0000);
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header.informacoes h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+  color: #ff4d4d;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header.informacoes h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: #f7f7f7;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;/
+}
+
+header.informacoes .relogio p {
+  font-size: 20px;
+  background: linear-gradient(135deg, #e60000, #ff6666);
+  padding: 15px 20px;
+  border-radius: 10px;
+  width: auto;
+  display: inline-block;
+  text-align: center;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+header.informacoes .relogio span {
+  font-weight: bold;
+  color: #fff;
+  font-size: 24px;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+@media (max-width: 768px) {
+  header.informacoes {
+    padding: 20px 15px;
+    border-radius: 12px;
   }
-  .relogio p {
+
+  header.informacoes h1 {
+    font-size: 36px;
+    letter-spacing: 1px;
+  }
+
+  header.informacoes h2 {
+    font-size: 18px;
+  }
+
+  header.informacoes .relogio p {
+    font-size: 16px;
+    padding: 12px 15px;
+  }
+
+  header.informacoes .relogio span {
     font-size: 20px;
-    color: #fff;
-    background: linear-gradient(135deg, #e60000, #ff6666);
+  }
+}
+
+@media (max-width: 480px) {
+  header.informacoes h1 {
+    font-size: 28px;
+  }
+
+  header.informacoes h2 {
+    font-size: 16px;
+  }
+
+  header.informacoes .relogio p {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  header.informacoes .relogio span {
+    font-size: 18px;
+  }
+}
+
+/* ------------------------------- */
+/* Estilos da Seção de Fotos */
+/* ------------------------------- */
+.fotos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-items: center;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  width: 100%;
+}
+
+.foto {
+  width: 250px;
+  height: 300px;
+  text-align: center;
+  background-color: #eb7171;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.foto .capa {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.foto .coracao {
+  font-size: 50px;
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  display: none;
+  transition: opacity 0.5s ease;
+}
+
+.foto.ativo img {
+  display: block;
+  opacity: 1;
+}
+
+.foto.ativo .capa {
+  display: none;
+}
+
+.foto p {
+  color: #fff;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.foto:hover {
+  transform: scale(1.05);
+}
+
+
+#mensagem p {
+  font-size: 11.8px;
+  line-height: 1;
+  word-wrap: break-word;
+  margin-bottom: 2px;
+}
+
+/* ------------------------------- */
+/* Estilos da Seção Envelope */
+/* ------------------------------- */
+.envelope-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  height: 260vh;
+  margin-top: 200px;
+  margin-bottom: 300px;
+}
+
+
+.envelope {
+  width: 455px;
+  height: 227px;
+  background: #8a0606;
+  box-shadow: 
+    0 0 1px rgba(0,0,0,0.5),
+    0 1px 3px rgba(0,0,0,0.25);
+  position: relative;
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.envelope:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 0 solid rgba(0,0,0,0.25);
+  border-width: 102.375px 227.5px;
+  border-top-color: transparent;
+  z-index: 2;
+}
+
+.envelope .flap {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  border: 0 solid transparent;
+  border-width: 113.75px 227.5px;
+  z-index: 3;
+}
+
+.envelope .flap.front {
+  border-left-color: #8a0606;
+  border-right-color: #8a0606;
+  border-bottom-color: #8a0606;
+}
+
+.envelope .flap.front:after {
+  content: '';
+  width: 100%;
+  height: 0;
+  position: absolute;
+  left: -227.5px;
+  bottom: -113.75px;
+  border: 0 solid transparent;
+  border-width: 111.475px 227.5px;
+  border-bottom-color: #8a0606;
+}
+
+.envelope .flap.top {
+  border-top-width: 125.125px;
+  border-top-color: #eb5555;
+  z-index: 3;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  transform-origin: top;
+  transform-style: preserve-3d;
+}
+
+.envelope.open .flap.top {
+  animation-name: flip;
+}
+
+.envelope .flap.top:after {
+  content: '';
+  position: absolute;
+  left: -227.5px;
+  top: -125.125px;
+  width: 100%;
+  height: 0;
+  border: 0 solid transparent;
+  border-width: 122.85px 227.5px;
+  border-top-color: #490303;
+}
+
+.envelope .letter {
+  position: absolute;
+  width: 444.08px;
+  height: 189.28px;
+  background: #e77676;;
+  top: 18.2px;
+  left: 5.46px;
+  border: 1px solid #e77676;;
+  z-index: 1;
+  animation-duration: 2s;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+  transform-style: preserve-3d;
+}
+
+.envelope.open .letter {
+  animation-name: remove;
+}
+
+.envelope .letter:before,
+.envelope .letter:after {
+  content: '';
+  position: absolute;
+  width: 440.44px;
+  height: 75%;
+  left: -1.82px;
+  background: #e77676;
+  border: 1px solid #e77676;;
+  animation-duration: 1s;
+  animation-delay: 4s;
+  animation-fill-mode: forwards;
+  transform-origin: top;
+  transform-style: preserve-3d;
+  transform: rotateX(10deg);
+}
+
+.envelope .letter:before {
+  z-index: 1;
+}
+
+.envelope.open .letter:before {
+  animation-name: fold-up;
+}
+
+.envelope .letter:after {
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
+  transform-origin: bottom;
+  transform: rotateX(-5deg);
+  bottom: 0;
+}
+
+.envelope.open .letter:after {
+  animation-name: fold-down;
+}
+
+@keyframes flip {
+  100% {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+}
+
+@keyframes remove {
+  50% {
+    top: -210px;
+  }
+  100% {
+    top: 18.2px;
+    z-index: 3;
+  }
+}
+
+@keyframes fold-up {
+  to {
+    transform: rotateX(140deg);
+  }
+}
+
+@keyframes fold-down {
+  to {
+    transform: rotateX(-140deg);
+  }
+}
+
+
+@media (max-width: 768px) {
+  body {
+    height: auto;
+  }
+
+  header.informacoes {
     padding: 10px;
-    border-radius: 8px;
-    display: inline-block;
-    margin: 0 auto;
+    width: 95%;
   }
+
+  header.informacoes h1 {
+    font-size: 28px;
+  }
+
+  header.informacoes h2 {
+    font-size: 16px;
+  }
+
+  header.informacoes .relogio p {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  header.informacoes .relogio span {
+    font-size: 18px;
+  }
+
   .fotos {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-    justify-items: center;
-    margin-top: 30px;
   }
+
   .foto {
     width: 150px;
-    text-align: center;
-    background-color: #333;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
+    height: 180px;
+    overflow: hidden;
   }
+
   .foto img {
     width: 100%;
-    height: auto;
-    border-radius: 5px;
+    height: 100%;
+    object-fit: cover;
+    display: none;
   }
-  .foto:hover {
-    transform: scale(1.05);
+
+  .foto.ativo img {
+    display: block;
   }
+
+  .foto.ativo .capa {
+    display: none;
+  }
+
+  .foto .capa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .foto .coracao {
+    font-size: 40px;
+  }
+
   .foto p {
+    font-size: 12px;
     color: #fff;
-    font-size: 14px;
     margin-top: 10px;
   }
-  #tempo {
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  /* ------------------------------- */
-  /* Estilos da Animação do Envelope */
-  /* ------------------------------- */
-  
-  .envelope {
-    width: 250px;
-    height: 125px;
-    margin: 40px auto;
-    background: #ddd;
-    box-shadow: 
-      0 0 1px rgba(0,0,0,0.5),
-      0 1px 3px rgba(0,0,0,0.25);
-    position: relative;
-    perspective: 800px;
-    cursor: pointer;
-  }
-  .envelope:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border: 0 solid rgba(0,0,0,0.25);
-    border-width: 56.25px 125px;
-    border-top-color: transparent;
-    z-index: 2;
-  }
-  .envelope .flap {
-    position: absolute;
-    width: 100%;
-    height: 0;
-    border: 0 solid transparent;
-    border-width: 62.5px 125px;
-    z-index: 3;
-  }
-  .envelope .flap.front {
-    border-left-color: #eee;
-    border-right-color: #eee;
-    border-bottom-color: #ccc;
-    z-index: 3;
-  }
-  .envelope .flap.front:after {
-    content: '';
-    width: 100%;
-    height: 0;
-    position: absolute;
-    left: -125px;
-    bottom: -62.5px;
-    border: 0 solid transparent;
-    border-width: 61.25px 125px;
-    border-bottom-color: #eee;
-  }
-  .envelope .flap.top {
-    border-top-width: 68.75px;
-    border-top-color: #aaa;
-    z-index: 3;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    transform-origin: top;
-    perspective: 800px;
-    transform-style: preserve-3d;
-  }
-  .envelope.open .flap.top {
-    animation-name: flip;
-  }
-  .envelope .flap.top:after {
-    content: '';
-    position: absolute;
-    left: -125px;
-    top: -68.75px;
-    width: 100%;
-    height: 0;
-    border: 0 solid transparent;
-    border-width: 67.5px 125px;
-    border-top-color: #eee;
-  }
-  .envelope .letter {
-    position: absolute;
-    width: 244px;
-    height: 104px;
-    background: #fff;
-    top: 10px;
-    left: 3px;
-    border: 1px solid #ccc;
-    z-index: 1;
-    animation-duration: 2s;
-    animation-delay: 1.5s;
-    animation-fill-mode: forwards;
-    transform-style: preserve-3d;
-  }
-  .envelope.open .letter {
-    animation-name: remove;
-  }
-  .envelope .letter:before,
-  .envelope .letter:after {
-    content: '';
-    position: absolute;
-    width: 242px;
-    height: 75%;
-    left: -1px;
-    background: #fff;
-    border: 1px solid #ccc;
-    animation-duration: 1s;
-    animation-delay: 4s;
-    animation-fill-mode: forwards;
-    transform-origin: top;
-    transform-style: preserve-3d;
-    transform: rotateX(10deg);
-  }
-  .envelope .letter:before {
-    z-index: 1;
-  }
-  .envelope.open .letter:before {
-    animation-name: fold-up;
-  }
-  .envelope .letter:after {
-    animation-delay: 5s;
-    animation-fill-mode: forwards;
-    transform-origin: bottom;
-    transform: rotateX(-5deg);
-    bottom: 0;
-  }
-  .envelope.open .letter:after {
-    animation-name: fold-down;
-  }
-  
 
-  @keyframes flip {
-    100% {
-      transform: rotateX(180deg);
-      z-index: 1;
-    }
+  .envelope-section {
+    height: auto;
+    margin-top: 100px;
+    margin-bottom: 150px;
   }
-  @keyframes remove {
-    50% {
-      top: -150px;
-    }
-    100% {
-      top: 10px;
-      z-index: 3;
-    }
+
+  .envelope {
+    width: 80vw;
+    height: 40vh;
+    min-width: 250px;
+    min-height: 150px;
   }
-  @keyframes fold-up {
-    to {
-      transform: rotateX(140deg);
-    }
+}
+
+@media (max-width: 480px) {
+  header.informacoes h1 {
+    font-size: 24px;
   }
-  @keyframes fold-down {
-    to {
-      transform: rotateX(-140deg);
-    }
+
+  header.informacoes h2 {
+    font-size: 14px;
   }
+
+  .fotos {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .foto {
+    width: 80%;
+    height: 200px;
+  }
+
+  .foto img {
+    height: 100%;
+  }
+
+  .foto .capa {
+    display: flex;
+  }
+
+  .foto.ativo .capa {
+    display: none;
+  }
+
+  .envelope {
+    width: 90vw;
+    height: 30vh;
+  }
+
+  #mensagem p {
+    font-size: 10px;
+  }
+}

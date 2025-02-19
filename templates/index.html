@@ -5,33 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dois Anos de Namoro</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1>Dois Anos de Namoro</h1>
-    <div class="relogio">
-      <p>Tempo desde que nos conhecemos: <span id="tempo"></span></p>
-    </div>
+  <div class="star-background"></div>
 
-    <!-- Grid de fotos -->
-    <div class="fotos">
-      {% for i in range(1, 26) %}
-        <div class="foto">
-          <img src="{{ url_for('static', filename='images/foto' ~ i ~ '.jpg') }}" alt="Foto {{ i }}">
+  <header class="informacoes">
+    <h1>Dois Anos de Namoro</h1>
+    <h2>24 Frases que representam o que eu sinto por você!</h2>
+    <div class="relogio">
+      <p>Atualmente fazem: <span id="tempo"></span> que nós nos conhecemos</p>
+    </div>
+  </header>
+  
+  <section class="fotos">
+    {% for i in range(1, 25) %}
+      <div class="foto">
+        <div class="capa">
+          <div class="coracao">
+            <p>❤️</p>
+          </div>
           <p>{{ legendas[i - 1] }}</p>
         </div>
-      {% endfor %}
-    </div>
+        <img src="{{ url_for('static', filename='images/foto' ~ i ~ '.jpg') }}" alt="Foto {{ i }}">
+      </div>
+    {% endfor %}
+  </section>
 
-    <!-- Cartinha (Envelope animado) -->
+  <section class="envelope-section">
     <div class="envelope" id="envelope" onclick="toggleCartinha()">
       <div class="flap front"></div>
       <div class="flap top"></div>
       <div class="letter" id="mensagem">
-        <p>Sua mensagem aqui, olá...</p>
+        <p>Então,</p>
+        <p>Hoje celebramos dois anos de muito amor e companheirismo. Foram momentos incríveis, risadas, aventuras e desafios que enfrentamos juntos, sempre de mãos dadas. Cada segundo ao seu lado é uma nova emoção que eu sinto.</p>
+        <p>Eu me sinto grato por tudo que passamos e por todas as memórias que criamos até aqui. Que venham muitos mais anos, mais risadas e mais histórias para contar.</p>
+        <p>Te amo demais meu amor, não tenho dúvida alguma que você foi a minha melhor escolha!!</p>
+        <p>Te amo princesa!!</p>
+        <p><strong>[Guilherme!!]</strong></p>
       </div>
     </div>
-  </div>
+  </section>
 
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
